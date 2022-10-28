@@ -1,7 +1,9 @@
 /* Desenvolva seu script aqui */
 
-import { observer } from "../../scripts/observer.js";
+import { btnAll } from "../../scripts/observer.js";
+import { Dom } from "../../scripts/render.js";
 import { Request } from "../../scripts/request.js";
 
-const footer = document.querySelector('footer')
-observer.observe(footer)
+
+Dom.renderBtnContainer(Request.cards())
+btnAll()

@@ -14,29 +14,44 @@ export class Dom {
             h3Title.innerText=obj.title
             h3Title.classList.add('font3/semibold')
         let pDescription = document.createElement('p')
-            pDescription.innerText=obj.pDescription
+            pDescription.innerText=obj.description
             pDescription.classList.add('font4/regular')
 
         let btn = document.createElement('button')
             btn.classList.add('link-green')
+            btn.innerText='Acessar conteúdo'
 
         divInfo.append(h3Title,pDescription,btn)
         li.append(img,divInfo)
         this.main.append(li)
     }
 
-    static renderBtnContainer(arr){
-        const btnContainer = document.querySelector('btn-container')
-        obj.forEach(element => {
-        });
-        let btn = document.createElement('button')
-            btn.innerText= obj.category
+    static async renderBtnContainer(arr){
+        const btnContainer = document.querySelector('#btn-container')
+        
+        const dados = await arr
+        
+        dados.news.forEach(element => {
+            let btn = document.createElement('button')
+            btn.innerText= element.category
             btn.classList.add('btn-gray')
+            btnContainer.append(btn)
+            
             btn.addEventListener('click',(e)=>{
                 e.preventDefault()
+                let filter = dados.news.filter((e)=>e.category ==element.category)
+                
+                filter.forEach((obj)=>{
+                    this.main.innerHTML=''
+                    console.log(obj)
+                    Dom.renderNewsCard(obj)
+                })
+
                 
             })
-        btnContainer.append(btn)
+        
+        });
+        
     }
 
     static renderPost(obj){
