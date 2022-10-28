@@ -1,6 +1,6 @@
 
 
-class Dom {
+export class Dom {
     static main = document.querySelector('main')
     
     static renderNewsCard(obj){
@@ -25,8 +25,10 @@ class Dom {
         this.main.append(li)
     }
 
-    static renderBtnContainer(obj){
+    static renderBtnContainer(arr){
         const btnContainer = document.querySelector('btn-container')
+        obj.forEach(element => {
+        });
         let btn = document.createElement('button')
             btn.innerText= obj.category
             btn.classList.add('btn-gray')
