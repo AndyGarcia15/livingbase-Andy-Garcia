@@ -1,3 +1,4 @@
+import { Request } from "./request.js"
 
 
 export class Dom {
@@ -20,6 +21,11 @@ export class Dom {
         let btn = document.createElement('button')
             btn.classList.add('link-green')
             btn.innerText='Acessar conteúdo'
+            btn.addEventListener('click',(e)=>{
+                e.preventDefault()
+                localStorage.setItem('@Living:Post',JSON.stringify(obj))
+                window.location.href='../post/index.html'
+            })
 
         divInfo.append(h3Title,pDescription,btn)
         li.append(img,divInfo)
@@ -30,24 +36,19 @@ export class Dom {
         const btnContainer = document.querySelector('#btn-container')
         
         const dados = await arr
-        
         dados.news.forEach(element => {
+           
             let btn = document.createElement('button')
             btn.innerText= element.category
             btn.classList.add('btn-gray')
             btnContainer.append(btn)
             
             btn.addEventListener('click',(e)=>{
-                e.preventDefault()
+                this.main.innerHTML=''
                 let filter = dados.news.filter((e)=>e.category ==element.category)
-                
                 filter.forEach((obj)=>{
-                    this.main.innerHTML=''
-                    console.log(obj)
                     Dom.renderNewsCard(obj)
-                })
-
-                
+                })  
             })
         
         });
@@ -77,4 +78,18 @@ export class Dom {
         headerPost.append(divContainer)
         this.main.append(headerPost,img,content)
     }
+    static async renderLocalStorage(){
+        let storage = JSON.parse(localStorage.getItem('@Living:Post'))
+        console.log(storage)
+        await Dom.renderPost(storage)
+        
+    }
+
+    static btnBacktoTop(){
+        let btn = querySelector('#backToTop')
+        btn.addEventListener('click',(e)=>{
+            
+        })
+    }
+
 }

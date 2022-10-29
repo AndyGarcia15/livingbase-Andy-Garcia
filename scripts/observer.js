@@ -3,6 +3,10 @@ import { Request } from "./request.js"
 let page = 0
 let test = []
 
+const main = document.querySelector('main')
+export const footer = document.querySelector('footer')
+
+
 const observer = new IntersectionObserver(async (entries)=>{
     
     let  data = await Request.cards(page)
@@ -19,9 +23,15 @@ const observer = new IntersectionObserver(async (entries)=>{
 export const btnAll = ()=>{
     let btn =document.querySelector('#btnAll')
     btn.addEventListener('click',(e)=>{
-        const footer = document.querySelector('footer')
+        main.innerHTML=''
+        
         observer.observe(footer)
     })
+}
+export const homepage = async ()=>{
+    let  data = await Request.cards(page)
+    Dom.renderBtnContainer(data)
+    observer.observe(footer)   
 }
 
 

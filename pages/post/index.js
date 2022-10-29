@@ -1,1 +1,3 @@
-/* Desenvolva seu script aqui */
+import { Dom } from "../../scripts/render.js";
+
+Dom.renderLocalStorage()
