@@ -1,6 +1,7 @@
 import { Request } from "./request.js"
 
 
+
 export class Dom {
     static main = document.querySelector('main')
     
@@ -56,16 +57,23 @@ export class Dom {
     }
 
     static renderPost(obj){
-        
+
+        const container = document.createElement('div')
+        container.id='container'
+
+        let titleContainer = document.createElement('div')
+            titleContainer.id='titleContainer'
         let headerPost = document.createElement('section')
             headerPost.id='headerPost'
+        let postContainer = document.createElement('div')
+            postContainer.id='postContainer'
         let divContainer = document.createElement('div')
-            divContainer.id='headerContainer'
+            divContainer.id='container'
         let h1title = document.createElement('h1')
-            h1title.classList.add('font1/semibold')
+            h1title.classList.add('font1-semibold')
             h1title.innerText = obj.title
         let pDescription = document.createElement('h5')
-            pDescription.classList.add('font4/regular')
+            pDescription.classList.add('font4-regular')
             pDescription.innerText=obj.description 
         let img = document.createElement('img')
             img.src= obj.image
@@ -73,10 +81,16 @@ export class Dom {
         let content = document.createElement('p')
             content.id='content'
             content.innerText=obj.content
+            content.classList.add('font4-regular')
         
-        divContainer.append(h1title,pDescription)
+        
+        titleContainer.append(h1title,pDescription)
+        divContainer.append(titleContainer)
         headerPost.append(divContainer)
-        this.main.append(headerPost,img,content)
+        this.main.append(headerPost)
+        postContainer.append(img,content)
+        container.append(postContainer)
+        this.main.append(container)
     }
     static async renderLocalStorage(){
         let storage = JSON.parse(localStorage.getItem('@Living:Post'))
