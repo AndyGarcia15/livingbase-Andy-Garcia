@@ -1,0 +1,33 @@
+.font1-semibold{
+    font-size:2.5rem;
+    font-weight: 600;
+    line-height: 150%;
+    color: var(--color-grey-100);
+}
+.font2-bold{
+    font-size:1.75rem;
+    font-weight: 700;
+    line-height: 150%;
+    color: var(--color-grey-100);
+}
+.font3-semibold{
+    font-size:1.25rem;
+    font-weight: 600;
+    line-height: 150%;
+    color: var(--color-grey-100);
+}
+.font4-semibold{
+    font-size:1rem;
+    font-weight: 600;
+    line-height: 150%;
+    color: var(--color-grey-200);
+}
+.font4-semibold{
+    font-size:1rem;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--color-grey-200);
+}
+span{
+    color: var(--color-brand-100);
+}

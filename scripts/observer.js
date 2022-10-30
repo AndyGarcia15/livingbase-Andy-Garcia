@@ -16,6 +16,7 @@ const observer = new IntersectionObserver(async (entries)=>{
             Dom.renderNewsCard(element)
         });
         page++
+        console.log(page)
         test.push(data.previusPage)
     }
 })
@@ -24,7 +25,6 @@ export const btnAll = ()=>{
     let btn =document.querySelector('#btnAll')
     btn.addEventListener('click',(e)=>{
         main.innerHTML=''
-        
         observer.observe(footer)
     })
 }
